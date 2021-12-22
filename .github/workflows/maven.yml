@@ -2,17 +2,16 @@ name: Maven
 
 on:
   push:
-    branches: [ main ]
   pull_request:
-    branches: [ main ]
+permissions:
+  contents: read
 
 jobs:
-  build:
-
+  build_and_verify:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v2
       with:
         submodules: recursive
     - name: Set up JDK 11
